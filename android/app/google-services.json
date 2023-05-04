@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "220643154769",
+    "project_id": "mminh-247e0",
+    "storage_bucket": "mminh-247e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220643154769:android:11907e4a81dd0d74f3d170",
+        "android_client_info": {
+          "package_name": "com.arckipel.boilerplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220643154769-n3k4fq5hltcbljeme5ojk2makpppcgcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfcHLCTndEcdXjCur_ISb3wZVi2AaaKe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220643154769-n3k4fq5hltcbljeme5ojk2makpppcgcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
