@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Temp</string>
-    <string name="facebook_app_id">475174443584303</string>
-    <string name="fb_login_protocol_scheme">fb475174443584303</string>
+    <string name="app_name">TempAppName</string> 
 </resources>

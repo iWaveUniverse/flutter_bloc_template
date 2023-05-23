@@ -1,6 +1,5 @@
 part of 'auth_bloc.dart';
 
-@immutable
 abstract class AuthEvent extends Equatable {
   const AuthEvent();
 
@@ -8,13 +7,17 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AuthLoaded extends AuthEvent {
-  final bool forceUpdate;
+class AuthLoad extends AuthEvent {
+  final bool redirect;
+  final Duration delay;
 
-  const AuthLoaded([this.forceUpdate = false]);
+  const AuthLoad({this.redirect = true, this.delay = Duration.zero});
+}
 
-  @override
-  List<Object> get props => [forceUpdate];
+class AuthUpdateUser extends AuthEvent {
+  final dynamic user;
+
+  const AuthUpdateUser({this.user});
 }
 
 class LogoutEvent extends AuthEvent {}

@@ -5,10 +5,10 @@
 // 'flutter create' boilerplate.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = temp
+PRODUCT_NAME = TempAppName
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.arckipel.boilerplate
+PRODUCT_BUNDLE_IDENTIFIER = com.app.boilerplate
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2022 com.arckipel. All rights reserved.

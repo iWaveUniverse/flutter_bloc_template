@@ -1,11 +1,11 @@
 import 'dart:io';
 
+import 'package:_imagineeringwithus_pack/setup/app_base.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class AppPrefs {
+class AppPrefs extends AppPrefsBase {
   AppPrefs._();
 
   static final AppPrefs _instance = AppPrefs._();
@@ -13,20 +13,15 @@ class AppPrefs {
   static AppPrefs get instance => _instance;
 
   late Box _box;
-  late final FlutterSecureStorage _secureStorage;
   bool _initialized = false;
 
-  initListener() async {
+  initialize() async {
     if (_initialized) return;
     if (!kIsWeb) {
       Directory appDocDirectory = await getApplicationDocumentsDirectory();
-      Hive..init(appDocDirectory.path);
+      Hive.init(appDocDirectory.path);
     }
     _box = await Hive.openBox('AppPref');
-    _securityAccount ??=
-        'flutter_secure_storage_service_${DateTime.now().millisecondsSinceEpoch}';
-    _secureStorage = FlutterSecureStorage(
-        iOptions: IOSOptions(accountName: _securityAccount!));
     _initialized = true;
   }
 
@@ -37,38 +32,25 @@ class AppPrefs {
     _box.delete('themeModel');
   }
 
-  set _securityAccount(String? value) => _box.put('_securityAccount', value);
-
-  String? get _securityAccount => _box.get('_securityAccount');
-
   set themeModel(String? value) => _box.put('themeModel', value);
 
   String? get themeModel => _box.get('themeModel');
 
+  @override
   set languageCode(String? value) => _box.put('languageCode', value);
 
-  String? get languageCode => _box.get('languageCode');
+  @override
+  String get languageCode => _box.get('languageCode') ?? 'en';
 
-  final String _accessToken = 'accessToken';
-  final String _refreshToken = 'refreshToken';
-  Future save(String key, String? value) =>
-      _secureStorage.write(key: key, value: value);
+  @override
+  set dateFormat(String value) => _box.put('dateFormat', value);
 
-  dynamic getNormalToken() async {
-    var result = _secureStorage.read(key: _accessToken);
-    // if (result != null) {
-    //   DateTime? expiryDate = Jwt.getExpiryDate(result.toString());
-    //   if (expiryDate != null &&
-    //       expiryDate.millisecondsSinceEpoch <
-    //           DateTime.now().millisecondsSinceEpoch) {
-    //     String refresh = _secureStorage.read(key: refreshToken).toString();
-    //     var newToken = await _repository.refreshProToken(refresh);
-    //     if (newToken?.accessToken != null) {
-    //       result = newToken!.accessToken;
-    //       _secureStorage.write(key:accessToken,value result.toString());
-    //     }
-    //   }
-    // }
-    return result;
-  }
+  @override
+  String get dateFormat => _box.get('dateFormat') ?? 'en';
+
+  @override
+  set timeFormat(String value) => _box.put('timeFormat', value);
+
+  @override
+  String get timeFormat => _box.get('timeFormat') ?? 'en';
 }

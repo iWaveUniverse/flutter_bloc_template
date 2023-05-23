@@ -11,6 +11,8 @@ class AuthState {
 
   AuthState update({AuthStateType? stateType, dynamic user}) {
     return AuthState(
-        stateType: stateType ?? this.stateType, user: user ?? this.user);
+      stateType: stateType ?? this.stateType,
+      user: user ?? this.user,
+    );
   }
 }

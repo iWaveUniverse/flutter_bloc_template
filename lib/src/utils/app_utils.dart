@@ -1,47 +1,31 @@
-import 'dart:io';
-import 'dart:typed_data';
-import 'dart:ui' as ui;
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
 import 'package:flutter/material.dart';
-import 'package:overlay_support/overlay_support.dart';
-import '../constants/constants.dart';
+// import 'dart:html' as html;
 
-class AppUtils {
-  AppUtils._();
+// setFriendlyRouteName({required String title, required String url}) {
+//   html.document.title = title;
+//   html.window.history.pushState(null, title, url);
+// }
 
-  static String appImageCorrect(String url, {base}) {
-    if (url.trim().indexOf('http') != 0) {
-      return (base ?? 'AppEndpoint.BASE_URL') + url;
-    }
-    return url;
+showSnackBar({context, required msg, Duration? duration}) {
+  ScaffoldMessenger.of(context ).showSnackBar(
+    SnackBar(
+      content: Text(
+        msg,
+        style: w300TextStyle(color: appColorBackground),
+      ),
+      duration: duration ?? const Duration(seconds: 1),
+      backgroundColor: appColorText,
+    ),
+  );
+}
+
+bool isImageByMime(type) {
+  switch (type) {
+    case 'image/jpeg':
+    case 'image/png':
+      return true;
+    default:
+      return false;
   }
-
-  static void hideKeyboard() {
-    FocusManager.instance.primaryFocus?.unfocus();
-  }
-
-  static void toast(String? message, {Duration? duration}) {
-    if (message == null) return;
-    showOverlayNotification((context) {
-      return SafeArea(
-        child: Material(
-          color: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Container(
-              color: AppColors.instance.appBackground,
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-              child: Text(
-                message,
-                textAlign: TextAlign.center, 
-              ),
-            ),
-          ),
-        ),
-      );
-    }, duration: duration ?? Duration(milliseconds: 2000));
-  }
- 
 }

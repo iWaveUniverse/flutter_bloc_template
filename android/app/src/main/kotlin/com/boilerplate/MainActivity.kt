@@ -1,4 +1,4 @@
-package com.arckipel.boilerplate
+package com.app.boilerplate
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,35 +1,28 @@
+import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
 import 'package:flutter/material.dart';
-import '../../src/utils/utils.dart';
 
-class AppColors {
+class AppColors extends AppColorsBase {
   AppColors._();
 
   static final AppColors _instance = AppColors._();
 
   static AppColors get instance => _instance;
 
-  ///MAIN COLORS
-  Color get appBackground => AppPrefs.instance.themeModel == 'dark'
-      ? appBackgroundDark
-      : appBackgroundLight;
+  @override
+  Color get text => Colors.black;
 
-  Color get appBackgroundDark => hexColor('#1C222C');
+  @override
+  Color get background => Colors.white;
 
-  Color get appBackgroundLight => hexColor('#1C222C');
+  @override
+  Color get element => Colors.grey[200]!;
 
-  Color get text =>
-      AppPrefs.instance.themeModel == 'dark' ? textDark : textLight;
+  @override
+  Color get primary => hexColor('00BDF9');
 
-  Color get textDark => hexColor('#A5D3FB');
+  @override
+  Color get shimerHighlightColor => hexColor('#1C222C');
 
-  Color get textLight => hexColor('#1C222C');
-
-  ///==============
-}
-
-Color hexColor(String hexString) {
-  final buffer = StringBuffer();
-  if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
-  buffer.write(hexString.replaceFirst('#', ''));
-  return Color(int.parse(buffer.toString(), radix: 16));
+  @override
+  Color get shimmerBaseColor => hexColor('#1C222C');
 }
