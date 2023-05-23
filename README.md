@@ -11,8 +11,8 @@ https://pub.dev/packages/easy_localization
 ## go_router
 ### deep-linking: https://docs.flutter.dev/ui/navigation/deep-linking
  
- ===================================
- AppName: TempAppName
- AppID: com.app.boilerplate
- PackageName: temp_package_name
- PackageDesc: temp_package_description
+## App Configs:
+#### AppName: TempAppName
+#### AppID: com.app.boilerplate
+#### PackageName: temp_package_name
+#### PackageDesc: temp_package_description
