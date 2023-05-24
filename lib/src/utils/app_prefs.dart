@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:_imagineeringwithus_pack/setup/app_base.dart';
 import 'package:flutter/foundation.dart';
@@ -13,6 +14,12 @@ class AppPrefs extends AppPrefsBase {
   static AppPrefs get instance => _instance;
 
   late Box _box;
+  final _encryptionKey = base64Url.decode(
+    const String.fromEnvironment(
+      'SECRET_KEY',
+      defaultValue: 'jgGYXtQC6hIAROYyI_bbBZu4jFVHiqUICSf8yN2zp_8=',
+    ),
+  );
   bool _initialized = false;
 
   initialize() async {
@@ -21,7 +28,10 @@ class AppPrefs extends AppPrefsBase {
       Directory appDocDirectory = await getApplicationDocumentsDirectory();
       Hive.init(appDocDirectory.path);
     }
-    _box = await Hive.openBox('AppPref');
+    _box = await Hive.openBox(
+      'AppPref',
+      encryptionCipher: HiveAesCipher(_encryptionKey),
+    );
     _initialized = true;
   }
 

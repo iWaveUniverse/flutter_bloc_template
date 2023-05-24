@@ -6,7 +6,7 @@
 
 ## dio
 
-## hive
+## hive || isar
 
 ## flutter_screenutil
 
