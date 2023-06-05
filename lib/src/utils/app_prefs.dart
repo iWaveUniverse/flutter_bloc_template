@@ -38,19 +38,24 @@ class AppPrefs extends AppPrefsBase {
   Stream watch(key) => _box.watch(key: key);
 
   void clear() {
-    _box.delete('accessToken');
-    _box.delete('themeModel');
+    _box.deleteAll([
+      AppPrefsBase.accessTokenKey,
+      AppPrefsBase.refreshTokenKey,
+      AppPrefsBase.themeModeKey,
+      AppPrefsBase.languageCodeKey,
+    ]);
   }
 
-  set themeModel(String? value) => _box.put('themeModel', value);
+  set themeModel(String? value) => _box.put(AppPrefsBase.themeModeKey, value);
 
-  String? get themeModel => _box.get('themeModel');
-
-  @override
-  set languageCode(String? value) => _box.put('languageCode', value);
+  String? get themeModel => _box.get(AppPrefsBase.themeModeKey);
 
   @override
-  String get languageCode => _box.get('languageCode') ?? 'en';
+  set languageCode(String? value) =>
+      _box.put(AppPrefsBase.languageCodeKey, value);
+
+  @override
+  String get languageCode => _box.get(AppPrefsBase.languageCodeKey) ?? 'en';
 
   @override
   set dateFormat(String value) => _box.put('dateFormat', value);

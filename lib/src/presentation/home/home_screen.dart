@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:gap/gap.dart';
 import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:temp_package_name/src/base/bloc.dart';
+import 'package:temp_package_name/src/base/theme_bloc/widgets/widget_theme_wraper.dart';
 import 'package:temp_package_name/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: appColorBackground,
       body: Column(
         children: [
           const Gap(32),
@@ -28,14 +32,17 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const Gap(32),
-              const WidgetAppSVG(
+              WidgetAppSVG(
                 'flutter',
                 width: 32,
+                color: appColorText,
               ),
               const Gap(20),
               Expanded(
                 child: Text(
-                  'DEMO',
+                  AppThemeProvider.isDarkMode()
+                      ? 'DEMO isDarkMode'
+                      : 'DEMO isNotDarkMode',
                   style: w600TextStyle(fontSize: 22),
                 ),
               ),
@@ -99,6 +106,28 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          Row(
+            children: [
+              const Spacer(),
+              FlutterSwitch(
+                width: 125.0,
+                height: 55.0,
+                valueFontSize: 25.0,
+                toggleSize: 45.0,
+                value: AppThemeProvider.isDarkMode(context),
+                borderRadius: 30.0,
+                padding: 8.0,
+                showOnOff: true,
+                activeText: "Dark",
+                inactiveText: "Light",
+                onToggle: (val) {
+                  findInstance<ThemeBloc>().add(ChangedThemeEvent(isDark: val));
+                },
+              ),
+              const Gap(32),
+            ],
+          ),
+          const Gap(32),
         ],
       ),
     );

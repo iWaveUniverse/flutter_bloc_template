@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart'; 
+import 'package:go_router/go_router.dart';
 
 import '../presentation/home/home_screen.dart';
 import '../presentation/page1/page1_screen.dart';
 import '../presentation/page2/page2_screen.dart';
 import 'app_get.dart';
 
+GlobalKey<NavigatorState> get navigatorKey =>
+    findInstance<GlobalKey<NavigatorState>>();
+
 // GoRouter configuration
 final goRouter = GoRouter(
-  navigatorKey: findInstance<GlobalKey<NavigatorState>>(),
+  navigatorKey: navigatorKey,
   routes: [
     GoRoute(
       name: 'home',
