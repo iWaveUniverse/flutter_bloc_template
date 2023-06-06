@@ -1,4 +1,5 @@
 export 'app_easy_localization.dart';
+export 'app_firebase_messaging.dart';
 export 'app_get.dart';
 export 'app_get_it.dart';
 export 'app_go_router.dart';
