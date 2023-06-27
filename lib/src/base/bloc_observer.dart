@@ -1,4 +1,4 @@
-import 'package:_imagineeringwithus_pack/setup/index.dart';
+import 'package:_iwu_pack/setup/index.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBlocObserver extends BlocObserver {

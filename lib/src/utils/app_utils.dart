@@ -1,4 +1,4 @@
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 // import 'dart:html' as html;
 
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 // }
 
 showSnackBar({context, required msg, Duration? duration}) {
-  ScaffoldMessenger.of(context ).showSnackBar(
+  ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(
         msg,

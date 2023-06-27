@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:gap/gap.dart';
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:temp_package_name/src/base/bloc.dart';

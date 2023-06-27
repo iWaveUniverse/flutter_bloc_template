@@ -1,5 +1,5 @@
-import 'package:_imagineeringwithus_pack/setup/index.dart';
-import 'package:bloc/bloc.dart'; 
+import 'package:_iwu_pack/setup/index.dart';
+import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:temp_package_name/src/utils/utils.dart';
@@ -22,6 +22,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     AppPrefs.instance.themeModel = event.isDark
         ? AppPrefsBase.themeModeDarkKey
         : AppPrefsBase.themeModeLightKey;
-    emit(state.update(isDark: event.isDark)); 
+    emit(state.update(isDark: event.isDark));
   }
 }

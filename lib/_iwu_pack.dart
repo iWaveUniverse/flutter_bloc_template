@@ -1,8 +1,8 @@
-import 'package:_imagineeringwithus_pack/setup/app_base.dart';
-import 'package:_imagineeringwithus_pack/setup/app_setup.dart';
+import 'package:_iwu_pack/setup/app_base.dart';
+import 'package:_iwu_pack/setup/app_setup.dart';
 
 import 'src/constants/constants.dart';
-import 'src/utils/utils.dart'; 
+import 'src/utils/utils.dart';
 
 imagineeringwithusPackSetup() {
   AppSetup.initialized(

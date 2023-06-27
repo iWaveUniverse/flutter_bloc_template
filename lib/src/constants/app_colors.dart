@@ -1,4 +1,4 @@
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:temp_package_name/src/base/theme_bloc/widgets/widget_theme_wraper.dart';
 
