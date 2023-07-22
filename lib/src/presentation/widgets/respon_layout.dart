@@ -1,51 +1,50 @@
-import 'dart:ui';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 
-T responByWidth<T>(context, T size, {T? computer, T? tablet, T? phone}) {
+T responByWidth<T>(context, T size,
+    {T? computer, T? tablet2, T? tablet1, T? phone}) {
   if (ResponLayout.isComputer(context)) return computer ?? size;
-  if (ResponLayout.isTablet(context)) return tablet ?? size;
+  if (ResponLayout.isTablet2(context)) {
+    return tablet2 ?? tablet1 ?? size;
+  }
+  if (ResponLayout.isTablet1(context)) return tablet1 ?? phone ?? size;
   if (ResponLayout.isPhone(context)) return phone ?? size;
   return size;
 }
 
-T responByWidth2<T>(context, T size, [T? tablet, T? phone]) {
-  if (ResponLayout.isComputer(context)) return size;
-  if (ResponLayout.isTablet(context)) return tablet ?? size;
-  if (ResponLayout.isPhone(context)) return phone ?? size;
-  return size;
-}
-
-bool isPhoneByWidth() => logicalWidth < ResponLayout.phoneLimit;
-
-//Size in logical pixels
-get logicalScreenSize => window.physicalSize / window.devicePixelRatio;
-get logicalWidth => logicalScreenSize.width;
-get logicalHeight => logicalScreenSize.height;
+bool isComputerByWidth(context) => ResponLayout.isComputer(context);
+bool isPhoneByWidth(context) => ResponLayout.isPhone(context);
 
 class ResponLayout extends StatelessWidget {
   final Widget phone;
-  final Widget tablet;
+  final Widget tablet1;
+  final Widget tablet2;
   final Widget computer;
 
   const ResponLayout({
     super.key,
     required this.phone,
-    required this.tablet,
+    required this.tablet1,
+    required this.tablet2,
     required this.computer,
   });
 
   static const int phoneLimit = 480;
-  static const int tabletLimit = 1280;
+  static const int tabletLimit2 = 1280;
+  static const int tabletLimit1 = 780;
 
   static bool isPhone(BuildContext context) =>
       MediaQuery.of(context).size.width < phoneLimit;
 
-  static bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width < tabletLimit &&
+  static bool isTablet1(BuildContext context) =>
+      MediaQuery.of(context).size.width < tabletLimit1 &&
       MediaQuery.of(context).size.width >= phoneLimit;
 
+  static bool isTablet2(BuildContext context) =>
+      MediaQuery.of(context).size.width < tabletLimit2 &&
+      MediaQuery.of(context).size.width >= tabletLimit1;
+
   static bool isComputer(BuildContext context) =>
-      MediaQuery.of(context).size.width >= tabletLimit;
+      MediaQuery.of(context).size.width >= tabletLimit2;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +52,10 @@ class ResponLayout extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth < phoneLimit) {
           return phone;
-        } else if (constraints.maxWidth < tabletLimit) {
-          return tablet;
+        } else if (constraints.maxWidth < tabletLimit1) {
+          return tablet1;
+        } else if (constraints.maxWidth < tabletLimit2) {
+          return tablet2;
         } else {
           return computer;
         }

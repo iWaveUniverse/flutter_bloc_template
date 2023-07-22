@@ -53,7 +53,7 @@ class _AppState extends State<_App> {
   Widget build(BuildContext context) {
     return Portal(
       child: ScreenUtilInit(
-        designSize: const Size(1920, 1080),
+        designSize: const Size(1280, 1080),
         minTextAdapt: true,
         useInheritedMediaQuery: true,
         builder: (_, child) {
