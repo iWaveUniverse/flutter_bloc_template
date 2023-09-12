@@ -5,6 +5,7 @@ import 'package:_iwu_pack/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:gap/gap.dart';
 
 class WidgetDeleteButton extends StatefulWidget {
   final VoidCallback callback;
@@ -55,7 +56,7 @@ class _WidgetDeleteButtonState extends State<WidgetDeleteButton> {
                       style: w400TextStyle(fontSize: 16),
                     ),
                   ),
-                  kSpacingHeight12,
+                  const Gap(12),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -77,7 +78,7 @@ class _WidgetDeleteButtonState extends State<WidgetDeleteButton> {
                           ),
                         ),
                       ),
-                      kSpacingWidth12,
+                      const Gap(12),
                       WidgetRippleButton(
                         onTap: widget.callback,
                         color: appColorText,

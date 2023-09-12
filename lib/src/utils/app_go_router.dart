@@ -6,12 +6,15 @@ import '../presentation/page1/page1_screen.dart';
 import '../presentation/page2/page2_screen.dart';
 import 'app_get.dart';
 
-GlobalKey<NavigatorState> get navigatorKey =>
+
+GlobalKey<NavigatorState> get appNavigatorKey =>
     findInstance<GlobalKey<NavigatorState>>();
+bool get isAppContextReady => appNavigatorKey.currentContext != null;
+BuildContext get appContext => appNavigatorKey.currentContext!;
 
 // GoRouter configuration
 final goRouter = GoRouter(
-  navigatorKey: navigatorKey,
+  navigatorKey: appNavigatorKey,
   routes: [
     GoRoute(
       name: 'home',

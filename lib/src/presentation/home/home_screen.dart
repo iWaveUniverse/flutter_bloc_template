@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 padding: const EdgeInsets.only(right: 16),
                                 child: WidgetRippleButton(
                                   onTap: () {
-                                    context.setLocale(e);
+                                    appContext.setLocale(e);
                                   },
                                   color: appColorText,
                                   borderRadius: BorderRadius.circular(8),

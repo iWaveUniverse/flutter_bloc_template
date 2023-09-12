@@ -32,7 +32,7 @@ class AppThemeProvider extends InheritedWidget {
   final bool isDark;
 
   static AppThemeProvider? maybeOf([context]) {
-    return (context ?? navigatorKey.currentContext)
+    return (context ?? appNavigatorKey.currentContext)
         ?.dependOnInheritedWidgetOfExactType<AppThemeProvider>();
   }
 
