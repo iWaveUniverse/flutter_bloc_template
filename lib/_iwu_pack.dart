@@ -4,7 +4,7 @@ import 'package:_iwu_pack/setup/app_setup.dart';
 import 'src/constants/constants.dart';
 import 'src/utils/utils.dart';
 
-imagineeringwithusPackSetup() {
+iwuSetup() {
   AppSetup.initialized(
     value: AppSetup(
       env: AppEnv.preprod,

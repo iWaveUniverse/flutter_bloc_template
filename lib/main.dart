@@ -10,26 +10,44 @@ import 'package:flutter_portal/flutter_portal.dart';
 
 import '_iwu_pack.dart';
 import 'src/base/bloc.dart';
-import 'src/base/theme_bloc/widgets/widget_theme_wraper.dart';
 import 'src/utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initEasyLocalization();
-  if (kIsWeb) {
-    // await Firebase.initializeApp(
-    //   options: firebaseOptionsPREPROD,
-    // );
-    setPathUrlStrategy();
-  } else if (!Platform.isWindows) {
-    // await Firebase.initializeApp();
-  }
-  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
-  await AppPrefs.instance.initialize();
-  imagineeringwithusPackSetup();
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.white,
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarDividerColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+
+  // if (kIsWeb) {
+  //   await Firebase.initializeApp(
+  //     options: firebaseOptionsPREPROD,
+  //   );
+  //   setPathUrlStrategy();
+  // } else if (!Platform.isWindows) {
+  //   await Firebase.initializeApp();
+  // }
+
+  await Future.wait([
+    if (Platform.isAndroid)
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: [SystemUiOverlay.top]),
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]),
+    AppPrefs.instance.initialize(),
+    initEasyLocalization(),
+  ]);
   bloc.Bloc.observer = AppBlocObserver();
+
+  iwuSetup();
   getItSetup();
+  
   runApp(wrapEasyLocalization(child: const _App()));
 }
 
