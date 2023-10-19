@@ -83,25 +83,19 @@ class _Page1ScreenState extends State<Page1Screen> {
         Row(
           children: [
             const Spacer(),
-            BlocBuilder<ThemeBloc, ThemeState>(
-              bloc: findInstance<ThemeBloc>(),
-              builder: (context, state) {
-                return FlutterSwitch(
-                  width: 125.0,
-                  height: 55.0,
-                  valueFontSize: 25.0,
-                  toggleSize: 45.0,
-                  value: findInstance<ThemeBloc>().state.isDark,
-                  borderRadius: 30.0,
-                  padding: 8.0,
-                  showOnOff: true,
-                  activeText: "Dark",
-                  inactiveText: "Light",
-                  onToggle: (val) {
-                    findInstance<ThemeBloc>()
-                        .add(ChangedThemeEvent(isDark: val));
-                  },
-                );
+            FlutterSwitch(
+              width: 125.0,
+              height: 55.0,
+              valueFontSize: 25.0,
+              toggleSize: 45.0,
+              value: AppPrefs.instance.isDarkTheme,
+              borderRadius: 30.0,
+              padding: 8.0,
+              showOnOff: true,
+              activeText: "Dark",
+              inactiveText: "Light",
+              onToggle: (val) {
+                appChangedTheme();
               },
             ),
             const Gap(32),

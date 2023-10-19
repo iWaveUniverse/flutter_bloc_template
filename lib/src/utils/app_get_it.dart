@@ -9,6 +9,5 @@ final getIt = GetIt.instance;
 void getItSetup() {
   getIt.registerSingleton<GlobalKey<NavigatorState>>(
       GlobalKey<NavigatorState>());
-  getIt.registerSingleton<AuthBloc>(AuthBloc());
-  getIt.registerSingleton<ThemeBloc>(ThemeBloc());
+  getIt.registerSingleton<AuthBloc>(AuthBloc()); 
 }

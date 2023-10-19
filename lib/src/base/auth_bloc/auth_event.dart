@@ -7,17 +7,17 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AuthLoad extends AuthEvent {
+class LoadAuthEvent extends AuthEvent {
   final bool redirect;
   final Duration delay;
 
-  const AuthLoad({this.redirect = true, this.delay = Duration.zero});
+  const LoadAuthEvent({this.redirect = true, this.delay = Duration.zero});
 }
 
-class AuthUpdateUser extends AuthEvent {
+class UpdateUserAuthEvent extends AuthEvent {
   final dynamic user;
 
-  const AuthUpdateUser({this.user});
+  const UpdateUserAuthEvent({this.user});
 }
 
-class LogoutEvent extends AuthEvent {}
+class LogoutAuthEvent extends AuthEvent {}

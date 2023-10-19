@@ -5,7 +5,6 @@ import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:temp_package_name/src/base/bloc.dart';
-import 'package:temp_package_name/src/base/theme_bloc/widgets/widget_theme_wraper.dart';
 import 'package:temp_package_name/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Gap(20),
               Expanded(
                 child: Text(
-                  AppThemeProvider.isDarkMode()
+                  AppPrefs.instance.isDarkTheme
                       ? 'DEMO isDarkMode'
                       : 'DEMO isNotDarkMode',
                   style: w600TextStyle(fontSize: 22),
@@ -114,14 +113,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 55.0,
                 valueFontSize: 25.0,
                 toggleSize: 45.0,
-                value: AppThemeProvider.isDarkMode(context),
+                value: AppPrefs.instance.isDarkTheme,
                 borderRadius: 30.0,
                 padding: 8.0,
                 showOnOff: true,
                 activeText: "Dark",
                 inactiveText: "Light",
                 onToggle: (val) {
-                  findInstance<ThemeBloc>().add(ChangedThemeEvent(isDark: val));
+                  appChangedTheme();
                 },
               ),
               const Gap(32),

@@ -1,6 +1,7 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
-import 'package:temp_package_name/src/base/theme_bloc/widgets/widget_theme_wraper.dart';
+
+import '../utils/utils.dart';
 
 class AppColors extends AppColorsBase {
   AppColors._();
@@ -29,7 +30,7 @@ class AppColors extends AppColorsBase {
 }
 
 byTheme(klight, {kdark}) {
-  if (AppThemeProvider.isDarkMode()) {
+  if (AppPrefs.instance.isDarkTheme) {
     return kdark ?? klight;
   }
   return klight;
