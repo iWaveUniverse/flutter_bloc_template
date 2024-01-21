@@ -9,20 +9,22 @@ import 'package:url_strategy/url_strategy.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 
 import '_iwu_pack.dart';
-import 'src/base/bloc.dart'; 
+import 'src/base/bloc.dart';
 import 'src/utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
-    // await Firebase.initializeApp(
-    //   options: firebaseOptionsPREPROD,
-    // );
     setPathUrlStrategy();
-  } else if (!Platform.isWindows) {
-    // await Firebase.initializeApp();
   }
+
   await Future.wait([
+    // if (kIsWeb)
+    //   Firebase.initializeApp(
+    //     options: firebaseOptionsPREPROD,
+    //   )
+    // else if (!Platform.isWindows)
+    //   Firebase.initializeApp(),
     if (Platform.isAndroid)
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
           overlays: [SystemUiOverlay.top]),
