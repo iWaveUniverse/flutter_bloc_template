@@ -1,5 +1,7 @@
 import 'package:_iwu_pack/setup/app_base.dart';
 import 'package:_iwu_pack/setup/app_setup.dart';
+import 'package:_iwu_pack_network/_iwu_pack_network.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'src/constants/constants.dart';
@@ -13,6 +15,16 @@ iwuSetup() {
       appPrefs: AppPrefs.instance,
       appTextStyleWrap: AppTextStyleWrap(
         fontWrap: (textStyle) => GoogleFonts.poppins(textStyle: textStyle),
+      ),
+      networkOptions: PNetworkOptionsImpl(
+        loggingEnable: kDebugMode,
+        baseUrl: '',
+        baseUrlAsset: '',
+        responsePrefixData: '',
+        responseIsSuccess: (response) => true,
+        errorInterceptor: (e) {
+          print(e);
+        },
       ),
     ),
   );
