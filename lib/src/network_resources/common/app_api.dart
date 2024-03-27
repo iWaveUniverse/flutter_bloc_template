@@ -18,9 +18,8 @@ class MyAppApiImp extends MyAppApi {
   Future<NetworkResponse> demo(params) async {
     return await handleNetworkError(
       proccess: () async {
-        Response response = await AppClient(
-          requiredToken: false,
-        ).get(_MyAppEndpoint.demo(), queryParameters: params);
+        Response response = await AppClient()
+            .get(_MyAppEndpoint.demo(), queryParameters: params);
         return NetworkResponse.fromResponse(response,
             converter: (json) =>
                 (json as List).map((e) => FeedbackType.fromJson(e)).toList());
